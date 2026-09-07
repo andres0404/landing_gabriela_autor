@@ -8,29 +8,146 @@
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
-    <main class="cover">
-      <video class="cover__video" autoplay muted loop playsinline aria-hidden="true">
+    <div class="video-layer" aria-hidden="true">
+      <video id="scroll-video" muted playsinline preload="auto">
         <source src="./assets/Ghostly_figures.mp4" type="video/mp4">
       </video>
+      <div class="video-layer__veil"></div>
+      <div class="video-layer__grain"></div>
+    </div>
 
-      <div class="cover__veil" aria-hidden="true"></div>
-      <div class="cover__grain" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="site-header__brand" href="#inicio">GC<span>.</span></a>
+      <nav aria-label="Navegación principal">
+        <a href="#drama">La historia</a>
+        <a href="#lanzamiento">Lanzamiento</a>
+        <a href="#librerias">Librerías</a>
+      </nav>
+      <a class="site-header__ticket" href="#lanzamiento">Entrada gratis <span>↗</span></a>
+    </header>
 
-      <header class="cover__header">
-        <span class="cover__series">Novela de terror psicológico</span>
-        <span class="cover__mark">GC / 01</span>
-      </header>
-
-      <section class="cover__copy" aria-labelledby="book-title">
-        <p class="cover__intro">Cuando creías haber encontrado el equilibrio</p>
-        <h1 id="book-title">Los<br><em>fantasmas</em><br>del pasado</h1>
-        <p class="cover__tagline">vienen a buscarte</p>
+    <main>
+      <section class="cover" id="inicio">
+        <div class="cover__content">
+          <p class="kicker">Novela de terror psicológico</p>
+          <h1>Los<br><em>fantasmas</em><br>del pasado</h1>
+          <p class="cover__legend">Cuando la paz parece conquistada,<br>la memoria aprende a tocar la puerta.</p>
+        </div>
+        <a class="cover__scroll" href="#drama"><span></span>Desciende hacia la historia</a>
+        <p class="cover__author">Una novela de<br><strong>Gabriela Capellania</strong></p>
       </section>
 
-      <footer class="cover__footer">
-        <span class="cover__author">Gabriela<br>Capellania</span>
-        <span class="cover__edition">Una nueva voz<br>en la oscuridad</span>
-      </footer>
+      <section class="drama section section--dark" id="drama">
+        <div class="section__label">01 / El drama</div>
+        <div class="drama__content reveal">
+          <p class="kicker">La memoria también sabe esperar</p>
+          <h2>Hay pasados<br>que no aceptan<br><em>el silencio.</em></h2>
+          <p class="drama__text">Jeison fue reclutado muy joven por la violencia marxista y cocalera al interior del país. Con poca formación académica y ética logró adaptarse rápidamente a un entorno violento y, bajo el mando de alias “Rectico”, presenció actos de lesa humanidad hasta que su conciencia apagada lo llevó a cometer un acto infame y brutal contra sus antiguos vecinos, siguiendo la orden de su líder.</p>
+          <p class="drama__text">Un golpe de suerte y un proceso de paz lo llevaron a iniciar su vida en las calles de la capital. Pero cuando todo era equilibrio, su conciencia invisible y aparentemente ausente se manifestó repentinamente con todo su peso, rompiendo progresivamente su paz y su cordura.</p>
+          <p class="drama__question">¿O eran realmente sus vecinos?</p>
+        </div>
+      </section>
+
+      <section class="author section section--paper" id="autora">
+        <div class="section__label">02 / La autora</div>
+        <div class="author__layout reveal">
+          <figure class="author__portrait"><img src="./assets/escritora.jpg" alt="Gabriela Capellania, autora de Los fantasmas del pasado"></figure>
+          <div class="author__copy">
+            <p class="kicker">Una nueva voz en la oscuridad</p>
+            <h2>Gabriela<br><em>Capellania</em></h2>
+            <p>Gabriela Capellania es una escritora colombiana que explora las zonas más frágiles de la mente humana: la culpa, la memoria y aquello que insiste en volver cuando creemos haber comenzado de nuevo.</p>
+            <p>En su primera novela construye una atmósfera inquietante donde la violencia del pasado se confunde con la percepción, y donde cada aparición obliga a preguntarse qué es real y qué nace de una conciencia que ya no puede permanecer dormida.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="launch section section--lime" id="lanzamiento">
+        <div class="section__label">03 / La charla</div>
+        <div class="launch__layout reveal">
+          <div>
+            <p class="kicker">Presentación oficial</p>
+            <h2>Ven a conocer<br>la historia<br><em>antes que nadie.</em></h2>
+          </div>
+          <div class="event-card">
+            <p class="event-card__title">Lanzamiento</p>
+            <p class="event-card__date">31 <small>de</small> octubre<br><span>2026</span></p>
+            <div class="event-card__details"><span>Bogotá · Suba</span><span>Entrada gratuita</span></div>
+            <a class="button button--dark" href="https://wa.me/573000000000?text=Quiero%20asistir%20al%20lanzamiento" target="_blank" rel="noreferrer">Quiero asistir <span>↗</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="book section section--paper" id="librerias">
+        <div class="section__label">04 / Encuentra el libro</div>
+        <div class="book__layout reveal">
+          <div class="book__cover"><img src="./assets/portada.jpg" alt="Portada del libro Los fantasmas del pasado"></div>
+          <div class="book__copy">
+            <p class="kicker">Disponible después del lanzamiento</p>
+            <h2>La historia<br>te espera<br><em>en las librerías.</em></h2>
+            <p>Después de su presentación, podrás encontrar <strong>Los fantasmas del pasado</strong> en las librerías aliadas y solicitar tu ejemplar para comenzar a descubrir qué regresó con Jeison.</p>
+            <div class="book__stores"><span>Librerías aliadas</span><span>Próximamente</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact section section--dark" id="contacto">
+        <div class="section__label">05 / Contacto</div>
+        <div class="contact__content reveal">
+          <p class="kicker">¿Quieres saber más?</p>
+          <h2>Da el primer paso<br>hacia <em>la oscuridad.</em></h2>
+          <a class="button button--lime" href="https://wa.me/573000000000?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20libro" target="_blank" rel="noreferrer">Escribir por WhatsApp <span>↗</span></a>
+        </div>
+      </section>
     </main>
+
+    <footer class="site-footer">
+      <span>Los fantasmas del pasado</span>
+      <span>© 2026 Gabriela Capellania</span>
+      <a href="#inicio">Volver arriba ↑</a>
+    </footer>
+
+    <script>
+      const video = document.querySelector('#scroll-video');
+      const reveals = document.querySelectorAll('.reveal');
+      let targetTime = 0;
+      let currentTime = 0;
+      let frameRequested = false;
+
+      const updateVideoFromScroll = () => {
+        const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 0;
+        if (!Number.isFinite(video.duration)) return;
+        targetTime = Math.max(0, Math.min(1, progress)) * video.duration;
+
+        if (!frameRequested) {
+          frameRequested = true;
+          requestAnimationFrame(seekVideo);
+        }
+      };
+
+      const seekVideo = () => {
+        currentTime += (targetTime - currentTime) * 0.16;
+        if (video.readyState >= 2 && Math.abs(video.currentTime - currentTime) > 0.025) {
+          video.currentTime = currentTime;
+        }
+        frameRequested = false;
+        if (Math.abs(targetTime - currentTime) > 0.01) {
+          frameRequested = true;
+          requestAnimationFrame(seekVideo);
+        }
+      };
+
+      video.addEventListener('loadedmetadata', updateVideoFromScroll);
+      window.addEventListener('scroll', updateVideoFromScroll, { passive: true });
+      window.addEventListener('resize', updateVideoFromScroll);
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('is-visible');
+        });
+      }, { threshold: 0.12 });
+      reveals.forEach((element) => observer.observe(element));
+      updateVideoFromScroll();
+    </script>
   </body>
 </html>
