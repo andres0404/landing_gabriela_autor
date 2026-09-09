@@ -29,7 +29,6 @@
     <main>
       <section class="cover" id="inicio">
         <div class="cover__content">
-          <p class="kicker">Novela de terror psicológico</p>
           <h1>Los<br><em>fantasmas</em><br>del pasado</h1>
           <p class="cover__legend">Cuando la paz parece conquistada,<br>la memoria aprende a tocar la puerta.</p>
         </div>
@@ -38,22 +37,18 @@
       </section>
 
       <section class="drama section section--dark" id="drama">
-        <div class="section__label">01 / El drama</div>
         <div class="drama__content reveal">
-          <p class="kicker">La memoria también sabe esperar</p>
           <h2>Hay pasados<br>que no aceptan<br><em>el silencio.</em></h2>
-          <p class="drama__text">Jeison fue reclutado muy joven por la violencia marxista y cocalera al interior del país. Con poca formación académica y ética logró adaptarse rápidamente a un entorno violento y, bajo el mando de alias “Rectico”, presenció actos de lesa humanidad hasta que su conciencia apagada lo llevó a cometer un acto infame y brutal contra sus antiguos vecinos, siguiendo la orden de su líder.</p>
-          <p class="drama__text">Un golpe de suerte y un proceso de paz lo llevaron a iniciar su vida en las calles de la capital. Pero cuando todo era equilibrio, su conciencia invisible y aparentemente ausente se manifestó repentinamente con todo su peso, rompiendo progresivamente su paz y su cordura.</p>
+          <p class="drama__text">Jeison fue reclutado muy joven por la violencia cocalera al interior del país. Con poca formación académica y ética logró adaptarse rápidamente a un entorno violento y, bajo el mando de alias “Rectico”, presenció crueldad, injusticia y humillación hasta que su conciencia apagada lo llevó a cometer un acto infame y brutal contra sus antiguos vecinos, siguiendo la orden de su líder.</p>
+          <p class="drama__text">Un proceso de paz lo sacó de la selva al cemento. Pero cuando reiniciaba hacia una nueva vida, su conciencia aparentemente ausente se manifestó repentinamente con todo su peso, rompiendo progresivamente su sueño y su cordura.</p>
           <p class="drama__question">¿O eran realmente sus vecinos?</p>
         </div>
       </section>
 
       <section class="author section section--paper" id="autora">
-        <div class="section__label">02 / La autora</div>
         <div class="author__layout reveal">
           <figure class="author__portrait"><img src="./assets/escritora.jpg" alt="Gabriela Capellania, autora de Los fantasmas del pasado"></figure>
           <div class="author__copy">
-            <p class="kicker">Una nueva voz en la oscuridad</p>
             <h2>Gabriela<br><em>Capellania</em></h2>
             <p>Gabriela Capellania es una escritora colombiana que explora las zonas más frágiles de la mente humana: la culpa, la memoria y aquello que insiste en volver cuando creemos haber comenzado de nuevo.</p>
             <p>En su primera novela construye una atmósfera inquietante donde la violencia del pasado se confunde con la percepción, y donde cada aparición obliga a preguntarse qué es real y qué nace de una conciencia que ya no puede permanecer dormida.</p>
@@ -62,10 +57,8 @@
       </section>
 
       <section class="launch section section--lime" id="lanzamiento">
-        <div class="section__label">03 / La charla</div>
         <div class="launch__layout reveal">
           <div>
-            <p class="kicker">Presentación oficial</p>
             <h2>Ven a conocer<br>la historia<br><em>antes que nadie.</em></h2>
           </div>
           <div class="event-card">
@@ -78,11 +71,9 @@
       </section>
 
       <section class="book section section--paper" id="librerias">
-        <div class="section__label">04 / Encuentra el libro</div>
         <div class="book__layout reveal">
           <div class="book__cover"><img src="./assets/portada.jpg" alt="Portada del libro Los fantasmas del pasado"></div>
           <div class="book__copy">
-            <p class="kicker">Disponible después del lanzamiento</p>
             <h2>La historia<br>te espera<br><em>en las librerías.</em></h2>
             <p>Después de su presentación, podrás encontrar <strong>Los fantasmas del pasado</strong> en las librerías aliadas y solicitar tu ejemplar para comenzar a descubrir qué regresó con Jeison.</p>
             <div class="book__stores"><span>Librerías aliadas</span><span>Próximamente</span></div>
@@ -91,9 +82,7 @@
       </section>
 
       <section class="contact section section--dark" id="contacto">
-        <div class="section__label">05 / Contacto</div>
         <div class="contact__content reveal">
-          <p class="kicker">¿Quieres saber más?</p>
           <h2>Da el primer paso<br>hacia <em>la oscuridad.</em></h2>
           <a class="button button--lime" href="https://wa.me/573000000000?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20libro" target="_blank" rel="noreferrer">Escribir por WhatsApp <span>↗</span></a>
         </div>
@@ -109,6 +98,8 @@
     <script>
       const video = document.querySelector('#scroll-video');
       const reveals = document.querySelectorAll('.reveal');
+      const book = document.querySelector('.book');
+      const cover = document.querySelector('.cover');
       let targetTime = 0;
       let currentTime = 0;
       let frameRequested = false;
@@ -141,6 +132,29 @@
       window.addEventListener('scroll', updateVideoFromScroll, { passive: true });
       window.addEventListener('resize', updateVideoFromScroll);
 
+      const updateBookCover = () => {
+        const bounds = book.getBoundingClientRect();
+        const start = window.innerHeight;
+        const finish = window.innerHeight * 0.1;
+        const progress = Math.max(0, Math.min(1, (start - bounds.top) / (start - finish)));
+        book.style.setProperty('--book-progress', progress.toFixed(3));
+      };
+
+      window.addEventListener('scroll', updateBookCover, { passive: true });
+      window.addEventListener('resize', updateBookCover);
+
+      const updateCoverBleed = () => {
+        const progress = Math.max(0, Math.min(1, window.scrollY / cover.offsetHeight));
+        cover.style.setProperty('--bleed-1', `${(progress * 6).toFixed(2)}px`);
+        cover.style.setProperty('--bleed-2', `${(progress * 14).toFixed(2)}px`);
+        cover.style.setProperty('--bleed-3', `${(progress * 25).toFixed(2)}px`);
+        cover.style.setProperty('--bleed-4', `${(progress * 39).toFixed(2)}px`);
+        cover.style.setProperty('--bleed-5', `${(progress * 56).toFixed(2)}px`);
+      };
+
+      window.addEventListener('scroll', updateCoverBleed, { passive: true });
+      window.addEventListener('resize', updateCoverBleed);
+
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) entry.target.classList.add('is-visible');
@@ -148,6 +162,8 @@
       }, { threshold: 0.12 });
       reveals.forEach((element) => observer.observe(element));
       updateVideoFromScroll();
+      updateBookCover();
+      updateCoverBleed();
     </script>
   </body>
 </html>
