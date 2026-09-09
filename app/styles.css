@@ -43,6 +43,7 @@ h1 em, h2 em { font-family: Georgia, "Times New Roman", serif; font-style: itali
 .section--dark, .section--paper, .section--lime { background: transparent; color: var(--ink); }
 .section h2 { font-size: clamp(3.6rem, 7vw, 8rem); }
 .drama h2, .launch h2, .contact h2 { text-shadow: 0 10px 34px rgba(23, 24, 24, .64); }
+.author h2, .book h2 { text-shadow: 0 var(--bleed-1, 0px) rgba(111, 25, 53, .34), 0 var(--bleed-2, 0px) rgba(111, 25, 53, .3), 0 var(--bleed-3, 0px) rgba(111, 25, 53, .24), 0 var(--bleed-4, 0px) rgba(111, 25, 53, .16), 0 var(--bleed-5, 0px) rgba(111, 25, 53, .1); }
 .drama__content { margin: 14vh 0 0 23%; max-width: 750px; }
 .drama__text, .author__copy > p, .book__copy > p { color: var(--ink); font-size: 18px; line-height: 1.65; max-width: 520px; }
 .drama__text:first-of-type { margin-top: 64px; }

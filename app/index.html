@@ -100,6 +100,7 @@
       const reveals = document.querySelectorAll('.reveal');
       const book = document.querySelector('.book');
       const cover = document.querySelector('.cover');
+      const bloodTitles = document.querySelectorAll('.author h2, .book h2');
       let targetTime = 0;
       let currentTime = 0;
       let frameRequested = false;
@@ -155,6 +156,26 @@
       window.addEventListener('scroll', updateCoverBleed, { passive: true });
       window.addEventListener('resize', updateCoverBleed);
 
+      const setBloodProgress = (element, progress) => {
+        element.style.setProperty('--bleed-1', `${(progress * 6).toFixed(2)}px`);
+        element.style.setProperty('--bleed-2', `${(progress * 14).toFixed(2)}px`);
+        element.style.setProperty('--bleed-3', `${(progress * 25).toFixed(2)}px`);
+        element.style.setProperty('--bleed-4', `${(progress * 39).toFixed(2)}px`);
+        element.style.setProperty('--bleed-5', `${(progress * 56).toFixed(2)}px`);
+      };
+
+      const updateSectionBlood = () => {
+        const sectionStart = window.innerHeight * 0.5;
+        bloodTitles.forEach((title) => {
+          const sectionTop = title.closest('.section').getBoundingClientRect().top;
+          const progress = Math.max(0, Math.min(1, (sectionStart - sectionTop) / sectionStart));
+          setBloodProgress(title, progress);
+        });
+      };
+
+      window.addEventListener('scroll', updateSectionBlood, { passive: true });
+      window.addEventListener('resize', updateSectionBlood);
+
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) entry.target.classList.add('is-visible');
@@ -164,6 +185,7 @@
       updateVideoFromScroll();
       updateBookCover();
       updateCoverBleed();
+      updateSectionBlood();
     </script>
   </body>
 </html>
